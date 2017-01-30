@@ -204,19 +204,16 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
                     (float)gdl.getDouble("spaceLength"),
                     (float)gdl.getDouble("phase"));
         }
-        if (v.hasKey("xOffset")) {
-            axis.setXOffset((float)(v.getDouble("xOffset")));
-        }
-        if (v.hasKey("yOffset")) {
-            axis.setYOffset((float)(v.getDouble("yOffset")));
-        }
+
     }
     private  void setXAxisInfo(XAxis axis,ReadableMap v){
 
         if(v.hasKey("labelRotationAngle")) axis.setLabelRotationAngle((float) v.getDouble("labelRotationAngle"));
         if(v.hasKey("spaceBetweenLabels")) axis.setSpaceBetweenLabels(v.getInt("spaceBetweenLabels"));
+
         if(v.hasKey("labelsToSkip")) axis.setLabelsToSkip(v.getInt("labelsToSkip"));
         if(v.hasKey("avoidFirstLastClipping")) axis.setAvoidFirstLastClipping(v.getBoolean("avoidFirstLastClipping"));
+
         if(v.hasKey("position")) {
             String name=v.getString("position");
             axis.setPosition(XAxis.XAxisPosition.valueOf(name));
@@ -263,6 +260,10 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
     public  void  setDescription(BarLineChartBase chart,String v){
        chart.setDescription(v);
     }
+    @ReactProp(name="noDataText")
+    public  void  setNoDataText(BarLineChartBase chart,String v){
+       chart.setNoDataText(v);
+    }
     @ReactProp(name="backgroundColor")
     public  void  setBackgroundColor(BarLineChartBase chart,String v){
         chart.setBackgroundColor(Color.parseColor(v));
@@ -307,22 +308,22 @@ public class MPBarLineChartManager extends SimpleViewManager<BarLineChartBase> {
         }
     }
     @ReactProp(name="extraOffsets")
-    public  void  setExtraOffsets(BarLineChartBase chart, String v){
-        String[] offsets = v.split(" ");
-        if (offsets.length == 1) {
-            int offset = (Integer.parseInt(offsets[0]));
-            chart.setExtraOffsets(offset, offset, offset, offset);
-        } else if(offsets.length == 2) {
-            int offset1=(Integer.parseInt(offsets[0]));
-            int offset2=(Integer.parseInt(offsets[1]));
-            chart.setExtraOffsets(offset2, offset1, offset2, offset1);
-        } else if(offsets.length == 4) {
-            int offset1 = (Integer.parseInt(offsets[0]));
-            int offset2 = (Integer.parseInt(offsets[1]));
-            int offset3 = (Integer.parseInt(offsets[0]));
-            int offset4 = (Integer.parseInt(offsets[1]));
-            chart.setExtraOffsets(offset4, offset1, offset2, offset3);
-        }
+    public  void  setExtraOffsets(BarLineChartBase chart,String v){
+        String[] padding=v.split(" ");
+        Float pad1=(Float.parseFloat(padding[0]));
+        Float pad2=(Float.parseFloat(padding[1]));
+        Float pad3=(Float.parseFloat(padding[2]));
+        Float pad4=(Float.parseFloat(padding[3]));
+        chart.setExtraOffsets(pad1,pad2,pad3,pad4);
+    }
+    @ReactProp(name="viewPortOffsets")
+    public  void  setViewPortOffsets(BarLineChartBase chart,String v){
+        String[] padding=v.split(" ");
+        Float pad1=(Float.parseFloat(padding[0]));
+        Float pad2=(Float.parseFloat(padding[1]));
+        Float pad3=(Float.parseFloat(padding[2]));
+        Float pad4=(Float.parseFloat(padding[3]));
+        chart.setViewPortOffsets(pad1,pad2,pad3,pad4);
     }
     @ReactProp(name="legend")
     public void setLegend(BarLineChartBase chart,ReadableMap v){

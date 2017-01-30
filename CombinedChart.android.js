@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {requireNativeComponent, View} from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { requireNativeComponent, View } from 'react-native';
 
 class CombinedChart extends Component {
     constructor(props) {
@@ -48,6 +48,7 @@ CombinedChart.propTypes = {
     maxVisibleValueCount:PropTypes.number,
     limitLine:PropTypes.object,
     description:PropTypes.string,
+    noDataText:PropTypes.string,
     backgroundColor:PropTypes.string,
     drawGridBackground:PropTypes.bool,
     gridBackgroundColor:PropTypes.string,
@@ -60,6 +61,8 @@ CombinedChart.propTypes = {
     yAxis:PropTypes.object,
     fitScreen:PropTypes.bool,
     chartPadding:PropTypes.string,
+    extraOffsets:PropTypes.string,
+    viewPortOffsets:PropTypes.string,
     legend:PropTypes.object,
     scaleX: PropTypes.number,
     scaleY: PropTypes.number,
@@ -74,8 +77,7 @@ CombinedChart.propTypes = {
     accessibilityLabel: React.PropTypes.string,
     testID: React.PropTypes.string,
     viewCenter: React.PropTypes.array,
-    zoomTo: PropTypes.object,
-    extraOffsets: PropTypes.string
+    zoomTo: PropTypes.object
 };
 
 class chart extends Component {

@@ -1,23 +1,86 @@
 {
-  "name": "react-native-chart-android",
-  "version": "1.0.2",
+  "_args": [
+    [
+      {
+        "name": "react-native-chart-android",
+        "raw": "react-native-chart-android@^1.0.3",
+        "rawSpec": "^1.0.3",
+        "scope": null,
+        "spec": ">=1.0.3 <2.0.0",
+        "type": "range"
+      },
+      "/home/qplum-5/Developer/qplum-android-qfolio"
+    ]
+  ],
+  "_from": "react-native-chart-android@>=1.0.3 <2.0.0",
+  "_id": "react-native-chart-android@1.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/react-native-chart-android",
+  "_nodeVersion": "4.2.1",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/react-native-chart-android-1.0.3.tgz_1462189635313_0.6550409242045134"
+  },
+  "_npmUser": {
+    "email": "hongyin163@163.com",
+    "name": "hongyin163"
+  },
+  "_npmVersion": "2.14.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "react-native-chart-android",
+    "raw": "react-native-chart-android@^1.0.3",
+    "rawSpec": "^1.0.3",
+    "scope": null,
+    "spec": ">=1.0.3 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-chart-android/-/react-native-chart-android-1.0.3.tgz",
+  "_shasum": "28bdd566866946273439207a050a6df030954c08",
+  "_shrinkwrap": null,
+  "_spec": "react-native-chart-android@^1.0.3",
+  "_where": "/home/qplum-5/Developer/qplum-android-qfolio",
+  "author": {
+    "name": "hongyin163"
+  },
+  "bugs": {
+    "url": "https://github.com/hongyin163/react-native-chart-android/issues"
+  },
+  "dependencies": {},
   "description": "react-native-mpchart provide modules to add chart to android,all charts are come from mpandroidchart library.",
-  "main": "index.android.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "28bdd566866946273439207a050a6df030954c08",
+    "tarball": "https://registry.npmjs.org/react-native-chart-android/-/react-native-chart-android-1.0.3.tgz"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hongyin163/react-native-chart-android.git"
-  },
+  "gitHead": "8b443c7c885a5377c8e90f7a6ebfcadd97d87052",
+  "homepage": "https://github.com/hongyin163/react-native-chart-android#readme",
   "keywords": [
     "chart",
     "mpandroidchart"
   ],
-  "author": "hongyin163",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hongyin163/react-native-chart-android/issues"
+  "main": "index.android.js",
+  "maintainers": [
+    {
+      "email": "hongyin163@163.com",
+      "name": "hongyin163"
+    }
+  ],
+  "name": "react-native-chart-android",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hongyin163/react-native-chart-android.git"
   },
-  "homepage": "https://github.com/hongyin163/react-native-chart-android#readme"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
 }

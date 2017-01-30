@@ -76,6 +76,12 @@ public class MPBarChartManager extends MPBarLineChartManager {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
+            if(config.hasKey("barSpacePercent")) {
+                dataSet.setBarSpacePercent((float)config.getDouble("barSpacePercent"));
+            }
+            if(config.hasKey("valueTextSize")) {
+                dataSet.setValueTextSize((float)config.getDouble("valueTextSize"));
+            }
             barData.addDataSet(dataSet);
 
         }

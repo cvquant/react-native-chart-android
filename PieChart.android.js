@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {requireNativeComponent, View} from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { requireNativeComponent, View } from 'react-native';
 
 class PieChart extends Component {
     constructor(props) {

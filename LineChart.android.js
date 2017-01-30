@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {requireNativeComponent, View} from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { requireNativeComponent, View } from 'react-native';
 
 class LineChart extends Component {
     constructor(props) {
@@ -30,6 +30,7 @@ LineChart.propTypes = {
     maxVisibleValueCount:PropTypes.number,
     limitLine:PropTypes.object,
     description:PropTypes.string,
+    noDataText: PropTypes.string,
     backgroundColor:PropTypes.string,
     drawGridBackground:PropTypes.bool,
     gridBackgroundColor:PropTypes.string,
@@ -42,10 +43,11 @@ LineChart.propTypes = {
     yAxis:PropTypes.object,
     fitScreen:PropTypes.bool,
     chartPadding:PropTypes.string,
+    extraOffsets:PropTypes.string,
+    viewPortOffsets:PropTypes.string,
     legend:PropTypes.object,
     viewCenter: PropTypes.array,
-    zoomTo: PropTypes.object,
-    extraOffsets: PropTypes.string
+    zoomTo: PropTypes.object
 }
 
 var MPLineChart = requireNativeComponent('MPLineChart', LineChart);

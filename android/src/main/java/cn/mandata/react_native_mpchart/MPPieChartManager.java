@@ -12,10 +12,11 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.animation.Easing;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+import com.github.mikephil.charting.highlight.Highlight;
 
 public class MPPieChartManager extends MPPieRadarChartManager {
     private String CLASS_NAME="MPPieChart";
@@ -28,6 +29,10 @@ public class MPPieChartManager extends MPPieRadarChartManager {
     @Override
     protected PieChart createViewInstance(ThemedReactContext reactContext) {
         PieChart chart= new PieChart(reactContext);
+
+        // initialise event listener to bind to chart
+        new PieRadarChartSelectionEventListener(chart);
+
         return chart;
     }
 
@@ -96,11 +101,36 @@ public class MPPieChartManager extends MPPieRadarChartManager {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
+            if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
+            if(config.hasKey("selectedIndex")) {
+                chart.highlightValue(new Highlight(config.getInt("selectedIndex"), 0), false);
+            }
             pieData.addDataSet(dataSet);
 
         }
-        chart.setBackgroundColor(Color.WHITE);
         chart.setData(pieData);
-        chart.invalidate();
+
+        /**
+         * Graph animation configurations
+         * If no animation config provided, call chart.invalidate()
+         * animation configs are maps with the following keys
+         * - duration or durationX/durationY in case of animateXY
+         * - support for easeFunction yet to be given
+         */
+        if (rm.hasKey("animateSpin")) {
+            chart.spin(rm.getMap("animateSpin").getInt("duration"), chart.getRotationAngle(), chart.getRotationAngle() + 360, Easing.EasingOption.EaseInCubic);
+        } else if (rm.hasKey("animateX")) {
+            chart.animateX(rm.getMap("animateX").getInt("duration"));
+        } else if (rm.hasKey("animateY")) {
+            chart.animateY(rm.getMap("animateY").getInt("duration"));
+        } else if (rm.hasKey("animateXY")) {
+            ReadableMap animationConfig = rm.getMap("animateXY");
+            chart.animateXY(
+                animationConfig.getInt("durationX"),
+                animationConfig.getInt("durationY")
+            );
+        } else {
+            chart.invalidate();
+        }
     }
 }

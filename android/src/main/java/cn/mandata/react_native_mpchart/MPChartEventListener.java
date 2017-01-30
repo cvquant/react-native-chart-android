@@ -43,12 +43,10 @@ public class MPChartEventListener implements OnChartGestureListener {
 
     @Override
     public void onChartDoubleTapped(MotionEvent motionEvent) {
-
     }
 
     @Override
     public void onChartSingleTapped(MotionEvent motionEvent) {
-
     }
 
     @Override

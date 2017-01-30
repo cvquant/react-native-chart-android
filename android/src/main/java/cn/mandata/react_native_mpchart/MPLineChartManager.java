@@ -44,6 +44,9 @@ public class MPLineChartManager extends MPBarLineChartManager {
     protected LineChart createViewInstance(ThemedReactContext reactContext) {
         LineChart chart=new LineChart(reactContext);
 
+        // initialise event listener to bind to chart
+        new MPChartSelectionEventListener(chart);
+
         return  chart;
     }
 
@@ -74,11 +77,14 @@ public class MPLineChartManager extends MPBarLineChartManager {
             ReadableMap config= map.getMap("config");
             LineDataSet dataSet=new LineDataSet(entries,label);
             if(config.hasKey("drawCircles")) dataSet.setDrawCircles(config.getBoolean("drawCircles"));
-            if(config.hasKey("circleSize")) dataSet.setCircleSize((float) config.getDouble("circleSize"));
-            if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
-            if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
             if(config.hasKey("drawCubic")) dataSet.setDrawCubic(config.getBoolean("drawCubic"));
             if(config.hasKey("drawValues")) dataSet.setDrawValues(config.getBoolean("drawValues"));
+            if(config.hasKey("circleSize")) dataSet.setCircleSize((float) config.getDouble("circleSize"));
+            if(config.hasKey("lineWidth")) dataSet.setLineWidth((float) config.getDouble("lineWidth"));
+            if(config.hasKey("highlightEnabled")) dataSet.setHighlightEnabled(config.getBoolean("highlightEnabled"));
+            if(config.hasKey("drawVerticalHighlightIndicator")) dataSet.setDrawVerticalHighlightIndicator(config.getBoolean("drawVerticalHighlightIndicator"));
+            if(config.hasKey("drawHorizontalHighlightIndicator")) dataSet.setDrawHorizontalHighlightIndicator(config.getBoolean("drawHorizontalHighlightIndicator"));
+            if(config.hasKey("highlightColor")) dataSet.setHighLightColor(Color.parseColor(config.getString("highlightColor")));
             if(config.hasKey("colors")){
                 ReadableArray colorsArray = config.getArray("colors");
                 ArrayList<Integer> colors = new ArrayList<>();
@@ -86,29 +92,35 @@ public class MPLineChartManager extends MPBarLineChartManager {
                     colors.add(Color.parseColor(colorsArray.getString(c)));
                 }
                 dataSet.setColors(colors);
-            }else if (config.hasKey("color")) {
+            }else
+            if(config.hasKey("color")) {
                 int[] colors=new int[]{Color.parseColor(config.getString("color"))};
                 dataSet.setColors(colors);
             }
-            if(config.hasKey("circleColors")){
-                ReadableArray colorsArray = config.getArray("circleColors");
-                ArrayList<Integer> colors = new ArrayList<>();
-                for(int c = 0; c < colorsArray.size(); c++){
-                    colors.add(Color.parseColor(colorsArray.getString(c)));
-                }
-                dataSet.setCircleColors(colors);
-            }else if (config.hasKey("circleColor")) {
-                int[] colors=new int[]{Color.parseColor(config.getString("circleColor"))};
-                dataSet.setCircleColors(colors);
-            }
-            if (config.hasKey("dashedLine")) {
-                String[] dashedLine = config.getString("dashedLine").split(" ");
-                dataSet.enableDashedLine(Integer.parseInt(dashedLine[0]), Integer.parseInt(dashedLine[1]), Integer.parseInt(dashedLine[2]));
-            }
             chartData.addDataSet(dataSet);
         }
-        //chart.setBackgroundColor(Color.WHITE);
+        // chart.setBackgroundColor(Color.WHITE);
         chart.setData(chartData);
-        chart.invalidate();
+
+        /**
+         * Graph animation configurations
+         * If no animation config provided, call chart.invalidate()
+         * animation configs are maps with the following keys
+         * - duration or durationX/durationY in case of animateXY
+         * - support for easeFunction yet to be given
+         */
+        if (rm.hasKey("animateX")) {
+            chart.animateX(rm.getMap("animateX").getInt("duration"));
+        } else if (rm.hasKey("animateY")) {
+            chart.animateY(rm.getMap("animateY").getInt("duration"));
+        } else if (rm.hasKey("animateXY")) {
+            ReadableMap animationConfig = rm.getMap("animateXY");
+            chart.animateXY(
+                animationConfig.getInt("durationX"),
+                animationConfig.getInt("durationY")
+            );
+        } else {
+            chart.invalidate();
+        }
     }
 }

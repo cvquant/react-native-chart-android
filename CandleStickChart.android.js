@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {requireNativeComponent, View} from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { requireNativeComponent, View } from 'react-native';
 
 class CandleStickChart extends Component {
     constructor(props) {
@@ -30,6 +30,7 @@ CandleStickChart.propTypes = {
     maxVisibleValueCount:PropTypes.number,
     limitLine:PropTypes.object,
     description:PropTypes.string,
+    noDataText:PropTypes.string,
     backgroundColor:PropTypes.string,
     drawGridBackground:PropTypes.bool,
     gridBackgroundColor:PropTypes.string,
@@ -42,12 +43,14 @@ CandleStickChart.propTypes = {
     yAxis:PropTypes.object,
     fitScreen:PropTypes.bool,
     chartPadding:PropTypes.string,
+    extraOffsets:PropTypes.string,
+    viewPortOffsets:PropTypes.string,
     legend:PropTypes.object,
     scaleX: PropTypes.number,
     scaleY: PropTypes.number,
     translateX: PropTypes.number,
     translateY: PropTypes.number,
-    rotation: PropTypes.number,	
+    rotation: PropTypes.number,
     renderToHardwareTextureAndroid: React.PropTypes.bool,
     onLayout: React.PropTypes.bool,
     accessibilityLiveRegion: React.PropTypes.string,
@@ -56,8 +59,7 @@ CandleStickChart.propTypes = {
     accessibilityLabel: React.PropTypes.string,
     testID: React.PropTypes.string,
     viewCenter: React.PropTypes.array,
-    zoomTo: PropTypes.object,
-    extraOffsets: PropTypes.string
+    zoomTo: PropTypes.object
   }
 
 var MPCandleStickChart = requireNativeComponent('MPCandleStickChart', CandleStickChart);
