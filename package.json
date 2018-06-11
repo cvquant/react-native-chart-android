@@ -50,7 +50,9 @@
   "bugs": {
     "url": "https://github.com/hongyin163/react-native-chart-android/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.6.1"
+  },
   "description": "react-native-mpchart provide modules to add chart to android,all charts are come from mpandroidchart library.",
   "devDependencies": {},
   "directories": {},
