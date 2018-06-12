@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { requireNativeComponent, View } from 'react-native';
+import PropTypes from 'prop-types';
 
 class HorizontalBarChart extends Component {
     constructor(props) {
@@ -51,14 +52,14 @@ HorizontalBarChart.propTypes = {
     translateX: PropTypes.number,
     translateY: PropTypes.number,
     rotation: PropTypes.number,
-    renderToHardwareTextureAndroid: React.PropTypes.bool,
-    onLayout: React.PropTypes.bool,
-    accessibilityLiveRegion: React.PropTypes.string,
-    accessibilityComponentType: React.PropTypes.string,
-    importantForAccessibility: React.PropTypes.string,
-    accessibilityLabel: React.PropTypes.string,
-    testID: React.PropTypes.string,
-    viewCenter: React.PropTypes.array,
+    renderToHardwareTextureAndroid: PropTypes.bool,
+    onLayout: PropTypes.bool,
+    accessibilityLiveRegion: PropTypes.string,
+    accessibilityComponentType: PropTypes.string,
+    importantForAccessibility: PropTypes.string,
+    accessibilityLabel: PropTypes.string,
+    testID: PropTypes.string,
+    viewCenter: PropTypes.array,
     zoomTo: PropTypes.object
 }
 
