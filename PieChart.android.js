@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 
 class PieChart extends Component {
@@ -15,7 +15,7 @@ class PieChart extends Component {
 }
 
 PieChart.propTypes = {
-    ...View.propTypes,
+    ...ViewPropTypes,
     data:PropTypes.object,
     touchEnabled:PropTypes.bool,
     dragEnabled:PropTypes.bool,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent, ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 
 class BarChart extends Component {
@@ -15,7 +15,7 @@ class BarChart extends Component {
 }
 
 BarChart.propTypes = {
-    ...View.propTypes,
+    ...ViewPropTypes,
     data:PropTypes.object,
     touchEnabled:PropTypes.bool,
     dragEnabled:PropTypes.bool,
